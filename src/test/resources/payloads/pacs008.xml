@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08">
+  <FIToFICstmrCdtTrf>
+    <GrpHdr>
+      <MsgId>MSG-42</MsgId>
+      <CreDtTm>2026-10-30T09:00:00</CreDtTm>
+      <NbOfTxs>1</NbOfTxs>
+    </GrpHdr>
+    <CdtTrfTxInf>
+      <PmtId>
+        <EndToEndId>E2E-42</EndToEndId>
+      </PmtId>
+      <IntrBkSttlmAmt Ccy="EUR">129.50</IntrBkSttlmAmt>
+    </CdtTrfTxInf>
+  </FIToFICstmrCdtTrf>
+</Document>

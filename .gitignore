@@ -1,0 +1,6 @@
+target/
+dependency-reduced-pom.xml
+.idea/
+src/test/fitnesse/FitNesseRoot/files/
+src/test/fitnesse/FitNesseRoot/ErrorLogs/
+/.superpowers/

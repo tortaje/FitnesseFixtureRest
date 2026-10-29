@@ -1,0 +1,22 @@
+---
+Test
+---
+|import|
+|io.github.tortaje.hvault|
+|io.github.tortaje.rest|
+
+|script|HVault|
+|read secret|fitnesse/oauth|key|client_id|into|clientId|
+|read secret|fitnesse/oauth|key|client_secret|into|clientSecret|
+
+|script|Rest|
+|client credentials;|secret:clientId|secret:clientSecret|
+|header;|Content-Type|application/xml|
+|body from file|src/test/resources/payloads/pacs008.xml|
+|post|/payments/iso|
+|check|status|201|
+|check|response header|Content-Type|application/xml|
+|check|xpath|/Document/FIToFIPmtStsRpt/GrpHdr/MsgId|STS-001|
+|check|xpath|/Document/FIToFIPmtStsRpt/TxInfAndSts/OrgnlEndToEndId|!-E2E-42-!|
+|check|xpath|/Document/FIToFIPmtStsRpt/TxInfAndSts/TxSts|ACSC|
+|show|pretty body|

@@ -1,0 +1,25 @@
+---
+Test
+---
+|import|
+|io.github.tortaje.rest|
+
+|script|Rest|
+|basic auth;|user|pwd|
+|get|/basic|
+|check|status|200|
+|api key header;|X-API-Key|k1|
+|get|/apikey-header|
+|check|status|200|
+|api key param;|api_key|k2|
+|get|/apikey-param|
+|check|status|200|
+|no auth|
+|query param;|q|v1|
+|header;|X-Trace|t1|
+|get|/query|
+|check|status|200|
+|get|http://127.0.0.1:${rest.http_port}/plain|
+|check|status|200|
+|get|http://127.0.0.1:${rest.http_port}/plain?a=1&b=2|
+|check|status|200|

@@ -1,0 +1,8 @@
+---
+Suite
+---
+!define TEST_SYSTEM {slim}
+
+Integration suite: secrets come from a real Vault through the HVault fixture, the Rest fixture uses them through `secret:` references against stub endpoints. Run with `mvn verify -Pit` (needs Docker).
+
+!contents

@@ -1,0 +1,24 @@
+---
+Test
+---
+|import|
+|io.github.tortaje.rest|
+
+|script|Rest|
+|client credentials;|my-app|secret:clientSecret|
+|header;|Content-Type|application/json|
+|body|{"amount": 100, "currency": "EUR"}|
+|post|/payments|
+|check|status|201|
+|$id=|json|$.id|
+
+|script|
+|get|/payments/$id|
+|check|json|$.status|ACCEPTED|
+|show|body|
+|show|pretty body|
+|ensure|response contains|ACCEPTED|
+|get|/iso|
+|check|xpath|/Document/GrpHdr/MsgId|M1|
+|show|pretty body|
+|check|status|200|

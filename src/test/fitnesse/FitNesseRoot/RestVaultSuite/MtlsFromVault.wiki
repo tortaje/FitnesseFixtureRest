@@ -1,0 +1,16 @@
+---
+Test
+---
+|import|
+|io.github.tortaje.hvault|
+|io.github.tortaje.rest|
+
+|script|HVault|
+|read all secrets from|fitnesse/mtls|with prefix|mtls.|
+
+|script|Rest|
+|base url|https://127.0.0.1:${rest.tls_port}|
+|use mtls;|mtls.cert|mtls.key|mtls.ca|
+|get|/secure|
+|check|status|200|
+|check|json|$.mtls|ok|
