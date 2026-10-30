@@ -6,7 +6,7 @@
 
   <groupId>io.github.tortaje</groupId>
   <artifactId>fitnesse-rest</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>fitnesse-rest</name>
   <description>FitNesse Slim fixture: REST client with secret references, auth and OpenTelemetry spans.</description>
