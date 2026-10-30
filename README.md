@@ -1,5 +1,8 @@
 # fitnesse-rest
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.tortaje/fitnesse-rest.svg)](https://central.sonatype.com/artifact/io.github.tortaje/fitnesse-rest)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+
 A generic REST client fixture for FitNesse Slim **script tables**. Test teams call and assert HTTP APIs
 (microservices, payment gateways, ESBs) from wiki pages, without writing one fixture per test case:
 
@@ -133,7 +136,7 @@ sequenceDiagram
 <dependency>
   <groupId>io.github.tortaje</groupId>
   <artifactId>fitnesse-rest</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 

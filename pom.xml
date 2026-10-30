@@ -6,10 +6,39 @@
 
   <groupId>io.github.tortaje</groupId>
   <artifactId>fitnesse-rest</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
   <name>fitnesse-rest</name>
   <description>FitNesse Slim fixture: REST client with secret references, auth and OpenTelemetry spans.</description>
+  <url>https://github.com/tortaje/FitnesseFixtureRest</url>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>tortaje</id>
+      <name>Stéphane Tortajada</name>
+      <url>https://github.com/tortaje</url>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:https://github.com/tortaje/FitnesseFixtureRest.git</connection>
+    <developerConnection>scm:git:https://github.com/tortaje/FitnesseFixtureRest.git</developerConnection>
+    <url>https://github.com/tortaje/FitnesseFixtureRest</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/tortaje/FitnesseFixtureRest/issues</url>
+  </issueManagement>
 
   <properties>
     <maven.compiler.release>17</maven.compiler.release>
@@ -312,6 +341,67 @@
                 <include>**/PackagedJarIT.java</include>
                 <include>**/*VaultIT.java</include>
               </includes>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <!-- Everything Maven Central requires: sources, javadoc, GPG signatures, upload to the Central Portal -->
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.4.0</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.12.0</version>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <!-- passphrase from the MAVEN_GPG_PASSPHRASE environment variable, or gpg-agent -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.2.8</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <!-- credentials: <server><id>central</id> in ~/.m2/settings.xml, with a Central Portal user token -->
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.12.0</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>central</publishingServerId>
+              <!-- the deployment waits in the Central Portal until it is published by hand -->
+              <autoPublish>false</autoPublish>
             </configuration>
           </plugin>
         </plugins>
